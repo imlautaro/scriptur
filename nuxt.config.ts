@@ -33,6 +33,9 @@ export default defineNuxtConfig({
 			'justify-around',
 			'justify-evenly',
 		],
+		shortcuts: {
+			'container-px': 'px-6',
+		},
 		transformers: [transformerDirectives(), transformerVariantGroup()],
 		typography: true,
 	},
