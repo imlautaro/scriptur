@@ -20,6 +20,9 @@ devDependencies:
   '@types/node':
     specifier: ^18.17.1
     version: 18.17.1
+  '@types/uuid':
+    specifier: ^9.0.2
+    version: 9.0.2
   '@unocss/nuxt':
     specifier: ^0.54.1
     version: 0.54.1(postcss@8.4.27)(vite@4.4.8)(webpack@5.88.2)
@@ -29,6 +32,9 @@ devDependencies:
   nuxt-icon:
     specifier: ^0.4.2
     version: 0.4.2(vue@3.3.4)
+  uuid:
+    specifier: ^9.0.0
+    version: 9.0.0
 
 packages:
 
@@ -1545,6 +1551,10 @@ packages:
 
   /@types/resolve@1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
+    dev: true
+
+  /@types/uuid@9.0.2:
+    resolution: {integrity: sha512-kNnC1GFBLuhImSnV7w4njQkUiJi0ZXUycu1rUaouPqiKlXkh77JKgdRnTAp1x5eBwcIwbtI+3otwzuIDEuDoxQ==}
     dev: true
 
   /@types/websocket@1.0.5:
@@ -7070,6 +7080,11 @@ packages:
       is-generator-function: 1.0.10
       is-typed-array: 1.1.12
       which-typed-array: 1.1.11
+    dev: true
+
+  /uuid@9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+    hasBin: true
     dev: true
 
   /validate-npm-package-license@3.0.4:
