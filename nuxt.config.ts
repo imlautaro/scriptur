@@ -7,7 +7,7 @@ const range = (size: number, startAt = 1) =>
 export default defineNuxtConfig({
 	appConfig: {
 		nuxtIcon: {
-			size: '1.5em',
+			size: '1.75em',
 		},
 	},
 	devtools: { enabled: true },
