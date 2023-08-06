@@ -22,7 +22,23 @@ export default defineNuxtConfig({
 		'@unocss/nuxt',
 		'nuxt-icon',
 		'@nuxtjs/google-fonts',
+		'@kevinmarrec/nuxt-pwa',
 	],
+	pwa: {
+		icon: {
+			maskablePadding: 0,
+		},
+		manifest: {
+			name: 'Scriptur',
+			short_name: 'Scriptur',
+			theme_color: '#000000',
+			scope: '/read',
+			start_url: '/read',
+		},
+		meta: {
+			name: 'Scriptur',
+		},
+	},
 	supabase: {
 		redirect: false,
 	},
