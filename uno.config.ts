@@ -1,6 +1,7 @@
 import { defineConfig } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
 import transformerVariantGroup from '@unocss/transformer-variant-group'
+import { colors } from '@unocss/preset-mini'
 
 const range = (size: number, startAt = 1) =>
 	Array.from(Array(size).keys()).map(i => i + startAt)
@@ -57,6 +58,9 @@ export default defineConfig({
 		'container-px': 'px-6',
 	},
 	theme: {
+		colors: {
+			primary: colors.teal,
+		},
 		fontFamily: {
 			serif: ['"Roboto Slab"', 'sans-serif'],
 			sans: ['Inter', 'sans-serif'],
