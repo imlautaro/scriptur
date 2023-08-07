@@ -34,7 +34,7 @@ const buildClasses = computed(() => {
 			break
 		case 'primary':
 		default:
-			classes.push('bg-black text-white ring-black/25')
+			classes.push('!bg-black text-white ring-black/25')
 	}
 
 	switch (props.size) {
