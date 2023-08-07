@@ -32,6 +32,11 @@ export default defineNuxtConfig({
 			name: 'Scriptur',
 		},
 	},
+	runtimeConfig: {
+		public: {
+			baseURL: 'http://localhost:3000',
+		},
+	},
 	supabase: {
 		redirect: false,
 	},
