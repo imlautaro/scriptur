@@ -1,23 +1,23 @@
 {
-  "name": "nuxt-app",
-  "private": true,
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "devDependencies": {
-    "@kevinmarrec/nuxt-pwa": "^0.17.0",
-    "@nuxt/devtools": "latest",
-    "@nuxtjs/google-fonts": "^3.0.2",
-    "@nuxtjs/supabase": "^1.0.2",
-    "@types/node": "^18.17.1",
-    "@types/uuid": "^9.0.2",
-    "@unocss/nuxt": "^0.54.1",
-    "nuxt": "^3.6.5",
-    "nuxt-icon": "^0.4.2",
-    "uuid": "^9.0.0"
-  }
+	"name": "nuxt-app",
+	"private": true,
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare"
+	},
+	"devDependencies": {
+		"@kevinmarrec/nuxt-pwa": "^0.17.0",
+		"@nuxt/devtools": "latest",
+		"@nuxtjs/google-fonts": "^3.0.2",
+		"@nuxtjs/supabase": "^1.0.2",
+		"@types/node": "^18.17.1",
+		"@types/uuid": "^9.0.2",
+		"@unocss/nuxt": "^0.54.1",
+		"nuxt": "^3.6.5",
+		"nuxt-icon": "^0.4.2",
+		"uuid": "^9.0.0"
+	}
 }
