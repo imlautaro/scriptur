@@ -13,6 +13,7 @@
 		"@kevinmarrec/nuxt-pwa": "^0.17.0",
 		"@nuxt/devtools": "latest",
 		"@nuxtjs/google-fonts": "^3.0.2",
+		"@nuxtjs/i18n": "8.0.0-rc.2",
 		"@nuxtjs/supabase": "^1.0.2",
 		"@pinia-plugin-persistedstate/nuxt": "^1.1.1",
 		"@pinia/nuxt": "^0.4.11",

@@ -10,6 +10,21 @@ export default defineNuxtConfig({
 			'Roboto+Slab': [400, 500, 700],
 		},
 	},
+	i18n: {
+		lazy: true,
+		langDir: 'locales',
+		locales: [
+			{
+				code: 'en',
+				file: 'en-US.json',
+			},
+			{
+				code: 'es',
+				file: 'es-AR.json',
+			},
+		],
+		defaultLocale: 'en',
+	},
 	imports: {
 		dirs: ['stores'],
 	},
@@ -21,6 +36,7 @@ export default defineNuxtConfig({
 		'@kevinmarrec/nuxt-pwa',
 		'@pinia/nuxt',
 		'@pinia-plugin-persistedstate/nuxt',
+		'@nuxtjs/i18n',
 	],
 	pinia: {
 		autoImports: ['defineStore'],
