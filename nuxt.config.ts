@@ -10,13 +10,21 @@ export default defineNuxtConfig({
 			'Roboto+Slab': [400, 500, 700],
 		},
 	},
+	imports: {
+		dirs: ['stores'],
+	},
 	modules: [
 		'@nuxtjs/supabase',
 		'@unocss/nuxt',
 		'nuxt-icon',
 		'@nuxtjs/google-fonts',
 		'@kevinmarrec/nuxt-pwa',
+		'@pinia/nuxt',
+		'@pinia-plugin-persistedstate/nuxt',
 	],
+	pinia: {
+		autoImports: ['defineStore'],
+	},
 	pwa: {
 		icon: {
 			maskablePadding: 0,
