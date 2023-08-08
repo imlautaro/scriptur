@@ -92,6 +92,10 @@ const padding = computed(() => {
 const iconClasses = computed(() => {
 	const classes: string[] = []
 
+	if (props.color === 'secondary') {
+		classes.push('text-gray')
+	}
+
 	switch (props.size) {
 		case 'sm':
 			classes.push('text-xs')
