@@ -4,6 +4,7 @@ export default defineNuxtConfig({
 			size: '1.75em',
 		},
 	},
+	css: ['~/assets/css/globals.css'],
 	googleFonts: {
 		families: {
 			'Inter': [400, 500, 700],
