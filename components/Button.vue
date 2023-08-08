@@ -127,9 +127,10 @@ const iconClasses = computed(() => {
 			justify="center"
 		>
 			<Icon v-if="icon" :name="icon" :class="iconClasses" />
-			<span>
+			<span v-if="$slots.default">
 				<slot />
 			</span>
+			<slot name="content" />
 		</Stack>
 		<Transition name="loader">
 			<Icon
