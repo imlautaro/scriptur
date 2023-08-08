@@ -153,11 +153,11 @@ export default defineEventHandler(async event => {
 			next:
 				currentBook === totalBooks && currentChapter === totalChapters
 					? null
-					: `/${nextBook}/${nextChapter}`,
+					: { book: nextBook, chapter: nextChapter },
 			previous:
 				currentBook === 1 && currentChapter === 1
 					? null
-					: `/${previousBook}/${previousChapter}`,
+					: { book: previousBook, chapter: previousChapter },
 			books: totalBooks,
 			chapters: totalChapters,
 		}
