@@ -20,6 +20,7 @@
 		"@types/node": "^18.17.1",
 		"@types/uuid": "^9.0.2",
 		"@unocss/nuxt": "^0.54.1",
+		"@vueuse/nuxt": "^10.3.0",
 		"nuxt": "^3.6.5",
 		"nuxt-icon": "^0.4.2",
 		"uuid": "^9.0.0"

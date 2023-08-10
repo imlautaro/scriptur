@@ -38,6 +38,7 @@ export default defineNuxtConfig({
 		'@pinia/nuxt',
 		'@pinia-plugin-persistedstate/nuxt',
 		'@nuxtjs/i18n',
+		'@vueuse/nuxt',
 	],
 	pinia: {
 		autoImports: ['defineStore'],
