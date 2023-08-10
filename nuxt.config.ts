@@ -18,13 +18,18 @@ export default defineNuxtConfig({
 			{
 				code: 'en',
 				file: 'en-US.json',
+				name: 'English',
 			},
 			{
 				code: 'es',
 				file: 'es-AR.json',
+				name: 'Español',
 			},
 		],
 		defaultLocale: 'en',
+		detectBrowserLanguage: {
+			useCookie: true,
+		},
 	},
 	imports: {
 		dirs: ['stores'],
