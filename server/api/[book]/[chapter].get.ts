@@ -7,6 +7,11 @@ export default defineEventHandler(async event => {
 	const currentVersion =
 		typeof query.version === 'string' ? query.version || 1 : 1
 
+	const headingsLang =
+		typeof query.headingsLang === 'string'
+			? query.headingsLang || 'en'
+			: 'en'
+
 	const currentBook = parseInt(event.context.params?.book || '1')
 	const currentChapter = parseInt(event.context.params?.chapter || '1')
 
@@ -76,7 +81,7 @@ export default defineEventHandler(async event => {
 	const getHeadings = async (currentBook: number, currentChapter: number) => {
 		const { data: headings, error: headingsError } = await supabase
 			.from('headings')
-			.select('verse, en')
+			.select(`verse, ${headingsLang}`)
 			.eq('book', currentBook)
 			.eq('chapter', currentChapter)
 
@@ -134,9 +139,11 @@ export default defineEventHandler(async event => {
 		}
 
 		return {
+			// @ts-ignore
 			headings: headings as {
 				verse: number
-				en: string
+				// @ts-ignore
+				[headingsLang]: string
 			}[],
 			version: version as {
 				id: number
