@@ -7,4 +7,6 @@ declare global {
 		full_name: string
 		language: string
 	}
+
+	type HighlightColor = 'yellow' | 'green' | 'blue' | 'pink' | 'purple'
 }

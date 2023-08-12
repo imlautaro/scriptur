@@ -2,6 +2,7 @@ import { defineConfig } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
 import transformerVariantGroup from '@unocss/transformer-variant-group'
 import { colors } from '@unocss/preset-mini'
+import { highlightColors } from './utils/highlight-colors'
 
 const range = (size: number, startAt = 1) =>
 	Array.from(Array(size).keys()).map(i => i + startAt)
@@ -53,6 +54,13 @@ export default defineConfig({
 		'justify-between',
 		'justify-around',
 		'justify-evenly',
+		...highlightColors
+			.map(color => [
+				`bg-${color}-200`,
+				`border-l-${color}-200`,
+				`text-${color}-950`,
+			])
+			.flat(),
 	],
 	shortcuts: {
 		'container-px': 'px-6',
