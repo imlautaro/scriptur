@@ -13,8 +13,16 @@ const props = withDefaults(
 	}
 )
 
+const slots = useSlots()
+
 const buildClasses = computed(() => {
 	const classes: string[] = []
+
+	if (!slots.default && props.icon) {
+		classes.push('rounded-full')
+	} else {
+		classes.push('rounded-lg')
+	}
 
 	if (!props.pending) {
 		classes.push('group')
@@ -65,25 +73,29 @@ const overlayClasses = computed(() => {
 const padding = computed(() => {
 	const classes: string[] = []
 
-	switch (props.size) {
-		case 'sm':
-			if (props.icon) {
-				classes.push('pl-3')
-			}
-			classes.push('px-3.5 py-2.5 space-x-2.5')
-			break
-		case 'lg':
-			if (props.icon) {
-				classes.push('pl-5')
-			}
-			classes.push('px-6 py-4 space-x-4')
-			break
-		case 'md':
-		default:
-			if (props.icon) {
-				classes.push('pl-4')
-			}
-			classes.push('px-5 py-3 space-x-3')
+	if (!slots.default && props.icon) {
+		classes.push('p-2')
+	} else {
+		switch (props.size) {
+			case 'sm':
+				if (props.icon) {
+					classes.push('pl-3')
+				}
+				classes.push('px-3.5 py-2.5 space-x-2.5')
+				break
+			case 'lg':
+				if (props.icon) {
+					classes.push('pl-5')
+				}
+				classes.push('px-6 py-4 space-x-4')
+				break
+			case 'md':
+			default:
+				if (props.icon) {
+					classes.push('pl-4')
+				}
+				classes.push('px-5 py-3 space-x-3')
+		}
 	}
 
 	return classes
