@@ -2,7 +2,6 @@
 definePageMeta({
 	layout: 'auth',
 	middleware: ['unauthenticated'],
-	path: '/recovery',
 })
 
 const supaAuth = useSupabaseClient().auth
