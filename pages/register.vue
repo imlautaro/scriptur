@@ -2,10 +2,11 @@
 definePageMeta({
 	layout: 'auth',
 	middleware: ['unauthenticated'],
-	path: '/register',
 })
 
 const supaAuth = useSupabaseClient().auth
+
+const localePath = useLocalePath()
 
 const email = ref('')
 const emailError = ref('')
@@ -18,6 +19,8 @@ const pending = ref(false)
 const error = ref('')
 const info = ref('')
 
+const { t } = useI18n()
+
 const {
 	public: { baseURL },
 } = useRuntimeConfig()
@@ -29,13 +32,13 @@ const register = async () => {
 	pending.value = true
 
 	if (!validateEmail(email.value)) {
-		emailError.value = 'Invalid email'
+		emailError.value = t('auth.invalid-email')
 		pending.value = false
 		return
 	}
 
 	if (password.value.length < 6) {
-		passwordError.value = 'Must be at least 6 characters'
+		passwordError.value = t('auth.must-be-at-least-6-characters')
 		pending.value = false
 		return
 	}
@@ -55,35 +58,33 @@ const register = async () => {
 		return
 	}
 
-	console.log(data)
-
 	if (data.user?.confirmed_at) {
-		error.value = 'User already exists'
+		error.value = t('auth.user-already-exists')
 		return
 	}
 
-	info.value = 'Confirmation email sent'
+	info.value = t('auth.confirmation-email-sent')
 }
 </script>
 
 <template>
 	<Stack gap="6" vertical>
 		<ContinueWithGoogle />
-		<span class="text-center text-gray text-sm">or</span>
+		<span class="text-center text-gray text-sm">{{ $t('auth.or') }}</span>
 		<Stack @submit.prevent="register" component="form" gap="12" vertical>
 			<Alert v-if="error" type="error">{{ error }}</Alert>
 			<Alert v-if="info" type="info">{{ info }}</Alert>
 			<TextField
-				label="Email"
+				:label="$t('auth.email')"
 				v-model="email"
 				:error="emailError"
 				type="email"
 			/>
 			<TextField
-				label="Password"
+				:label="$t('auth.password')"
 				type="password"
 				v-model="password"
-				hint="Must be at least 6 characters"
+				:hint="$t('auth.must-be-at-least-6-characters')"
 				:error="passwordError"
 			/>
 			<Stack gap="4" vertical>
@@ -93,12 +94,15 @@ const register = async () => {
 					block
 					:pending="pending"
 				>
-					Register
+					{{ $t('auth.register') }}
 				</Button>
 				<span class="text-center">
-					Already have an account?
-					<NuxtLink class="font-medium text-primary" to="/login">
-						Login
+					{{ $t('auth.already-have-an-account') }}
+					<NuxtLink
+						class="font-medium text-primary"
+						:to="localePath({ name: 'login' })"
+					>
+						{{ $t('auth.login') }}
 					</NuxtLink>
 				</span>
 			</Stack>

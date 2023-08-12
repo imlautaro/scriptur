@@ -16,6 +16,6 @@ const login = () => {
 
 <template>
 	<Button block icon="logos:google-icon" color="secondary" @click="login">
-		Continue with Google
+		{{ $t('auth.continue-with') }} Google
 	</Button>
 </template>

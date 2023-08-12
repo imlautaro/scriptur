@@ -4,6 +4,16 @@ export default defineNuxtConfig({
 			size: '1.75em',
 		},
 	},
+	components: {
+		dirs: [
+			{
+				path: '~/components/panels',
+				pathPrefix: false,
+				prefix: 'panel',
+			},
+			'~/components',
+		],
+	},
 	css: ['~/assets/css/globals.css'],
 	googleFonts: {
 		families: {

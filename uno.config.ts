@@ -6,6 +6,8 @@ import { colors } from '@unocss/preset-mini'
 const range = (size: number, startAt = 1) =>
 	Array.from(Array(size).keys()).map(i => i + startAt)
 
+const highlightColors = ['yellow', 'green', 'blue', 'pink', 'purple']
+
 export default defineConfig({
 	preflights: [
 		{
@@ -53,6 +55,13 @@ export default defineConfig({
 		'justify-between',
 		'justify-around',
 		'justify-evenly',
+		...highlightColors
+			.map(color => [
+				`bg-${color}-200`,
+				`border-l-${color}-200`,
+				`text-${color}-950`,
+			])
+			.flat(),
 	],
 	shortcuts: {
 		'container-px': 'px-6',

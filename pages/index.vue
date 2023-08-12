@@ -1,18 +1,7 @@
 <script setup lang="ts">
-const user = useSupabaseUser()
-const supaAuth = useSupabaseClient().auth
+defineI18nRoute(false)
 </script>
 
 <template>
-	<div>
-		<h1>Hello world from Nuxt 3!</h1>
-		<Button
-			v-if="user"
-			@click="supaAuth.signOut()"
-			color="secondary"
-			size="sm"
-		>
-			Logout
-		</Button>
-	</div>
+	<div>Home Page</div>
 </template>

@@ -2,10 +2,10 @@
 definePageMeta({
 	layout: 'auth',
 	middleware: ['unauthenticated'],
-	path: '/recovery',
 })
 
 const supaAuth = useSupabaseClient().auth
+const localePath = useLocalePath()
 
 const email = ref('')
 
@@ -47,7 +47,7 @@ const sendRecoveryEmail = async () => {
 	>
 		<Alert v-if="error" type="error">{{ error }}</Alert>
 		<Alert v-if="info" type="info">{{ info }}</Alert>
-		<TextField label="Email" v-model="email" type="email" />
+		<TextField :label="$t('auth.email')" v-model="email" type="email" />
 		<Stack gap="4" vertical>
 			<Button
 				type="submit"
@@ -55,12 +55,15 @@ const sendRecoveryEmail = async () => {
 				block
 				:pending="pending"
 			>
-				Send me a recovery email
+				{{ $t('auth.send-me-a-recovery-email') }}
 			</Button>
 			<span class="text-center">
-				Did you remember your password?
-				<NuxtLink class="font-medium text-primary" to="/login">
-					Login
+				{{ $t('auth.did-you-remember-your-password') }}
+				<NuxtLink
+					class="font-medium text-primary"
+					:to="localePath({ name: 'login' })"
+				>
+					{{ $t('auth.login') }}
 				</NuxtLink>
 			</span>
 		</Stack>
