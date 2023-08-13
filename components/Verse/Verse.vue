@@ -42,6 +42,7 @@ const htmlContent = computed(() => {
 		"
 		@dblclick.prevent="selectStore.toggleSelection(book, chapter, verse)"
 		class="relative"
+		:id="`verse-${verse}`"
 	>
 		<span
 			class="absolute -left-1 -translate-x-full text-[0.5em] top-0 -translate-y-1 text-gray select-none"

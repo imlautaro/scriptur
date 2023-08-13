@@ -9,6 +9,7 @@ const selected = reactive({
 
 const supabase = useSupabaseClient()
 const route = useRoute()
+const localePath = useLocalePath()
 
 const { books } = useBooks()
 
@@ -161,15 +162,22 @@ watch(
 			<div class="h-full" v-if="selected.chapter && selected.book">
 				<Loader v-if="pendingVerses" />
 				<div v-else class="grid grid-cols-4 gap-2 p-2">
-					<Button
+					<NuxtLink
 						v-for="(_, verse) in new Array(verses)"
-						block
-						color="secondary"
-						:to="`/read/${selected.book.key}/${selected.chapter}`"
-						native
+						class="border py-3 px-5 font-medium shadow-sm hover:bg-gray-200/25 active:bg-gray-200/50 duration-150 rounded-lg w-full flex items-center justify-center text-center"
+						:to="
+							localePath({
+								name: 'read-book-chapter',
+								params: {
+									book: selected.book.key,
+									chapter: selected.chapter.toString(),
+								},
+								hash: `#verse-${verse + 1}`,
+							})
+						"
 					>
 						{{ verse + 1 }}
-					</Button>
+					</NuxtLink>
 				</div>
 			</div>
 			<div class="h-full" v-else-if="selected.book">

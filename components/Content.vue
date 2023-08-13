@@ -14,7 +14,8 @@ const props = defineProps<{
 	}[]
 }>()
 
-const { titleElement } = useScrollingFeatures()
+const { titleElement, scrollingElement } = useScrollingFeatures()
+const route = useRoute()
 
 const customizations = useCustomizationsStore()
 const version = useVersionStore()
@@ -34,6 +35,19 @@ const findHeading = (verse: number) => {
 		return undefined
 	}
 }
+
+onMounted(async () => {
+	await nextTick()
+
+	const regex = /#verse-(\d+)/
+	const match = route.hash.match(regex)
+	if (match && match[1]) {
+		const verseEl = document.getElementById(`verse-${match[1]}`)
+		if (verseEl && scrollingElement.value) {
+			scrollingElement.value.scrollTop = verseEl.offsetTop - 40
+		}
+	}
+})
 </script>
 
 <template>
