@@ -119,17 +119,16 @@ const currentLocale = computed(() =>
 		<Modal v-model="languageModal">
 			<Stack vertical>
 				<template v-for="item in locales">
-					<GhostButton
+					<NuxtLink
 						v-if="typeof item !== 'string'"
 						:to="switchLocalePath(item.code)"
-						class="p-4"
-						gap="4"
+						class="flex p-4 space-x-4 duration-150 hover:bg-black/5 active:bg-black/10"
 					>
 						<Icon :name="`circle-flags:${item.code}`" />
 						<span>
 							{{ item.name }}
 						</span>
-					</GhostButton>
+					</NuxtLink>
 				</template>
 			</Stack>
 		</Modal>
