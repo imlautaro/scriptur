@@ -170,7 +170,8 @@
 		"user-already-exists": "El usuario ya existe",
 		"confirmation-email-sent": "Correo de confirmación enviado",
 		"waiting-for-login": "Por favor espere",
-		"invalid-email": "Correo electrónico inválido"
+		"invalid-email": "Correo electrónico inválido",
+		"email-sent": "Correo electrónico enviado"
 	},
 	"using-app-as-a-guest": "Estás usando esta app como invitado",
 	"using-app-as-a-guest-description": "No te preocupes, puedes seguir usando esta app. Una cuenta sólo es necesaria si quieres tener versículos resaltados sincronizados.",

@@ -170,7 +170,8 @@
 		"user-already-exists": "User already exists",
 		"confirmation-email-sent": "Confirmation email sent",
 		"waiting-for-login": "Waiting for login",
-		"invalid-email": "Invalid email"
+		"invalid-email": "Invalid email",
+		"email-sent": "Email sent"
 	},
 	"using-app-as-a-guest": "You're using this app as a guest",
 	"using-app-as-a-guest-description": "Don't worry, you can still use this app. An account is only required if you want to have syncronized highlights.",

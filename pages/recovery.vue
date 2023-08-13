@@ -18,6 +18,8 @@ const {
 	public: { baseURL },
 } = useRuntimeConfig()
 
+const { t } = useI18n()
+
 const sendRecoveryEmail = async () => {
 	error.value = ''
 	pending.value = true
@@ -33,7 +35,7 @@ const sendRecoveryEmail = async () => {
 		return
 	}
 
-	info.value = 'Email sent'
+	info.value = t('auth.email-sent')
 }
 </script>
 
@@ -46,7 +48,7 @@ const sendRecoveryEmail = async () => {
 	>
 		<Alert v-if="error" type="error">{{ error }}</Alert>
 		<Alert v-if="info" type="info">{{ info }}</Alert>
-		<TextField label="Email" v-model="email" type="email" />
+		<TextField :label="$t('auth.email')" v-model="email" type="email" />
 		<Stack gap="4" vertical>
 			<Button
 				type="submit"
@@ -54,13 +56,13 @@ const sendRecoveryEmail = async () => {
 				block
 				:pending="pending"
 			>
-				Send me a recovery email
+				{{ $t('auth.send-me-a-recovery-email') }}
 			</Button>
 			<span class="text-center">
-				Did you remember your password?
-				<NuxtLink class="font-medium text-primary" to="/login">
-					Login
-				</NuxtLink>
+				{{ $t('auth.did-you-remember-your-password') }}
+				<NuxtLinkLocale class="font-medium text-primary" to="/login">
+					{{ $t('auth.login') }}
+				</NuxtLinkLocale>
 			</span>
 		</Stack>
 	</Stack>

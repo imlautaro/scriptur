@@ -5,6 +5,8 @@ definePageMeta({
 })
 
 const supaAuth = useSupabaseClient().auth
+const localePath = useLocalePath()
+const lastVisited = useLastVisited()
 
 const email = ref('')
 
@@ -29,25 +31,34 @@ const login = async () => {
 		return
 	}
 
-	return navigateTo('/read')
+	return navigateTo(
+		localePath({
+			name: 'read-book-chapter',
+			params: { book: lastVisited.book, chapter: lastVisited.chapter },
+		})
+	)
 }
 </script>
 
 <template>
 	<Stack gap="6" vertical>
 		<ContinueWithGoogle />
-		<span class="text-center text-gray text-sm">or</span>
+		<span class="text-center text-gray text-sm">{{ $t('auth.or') }}</span>
 		<Stack @submit.prevent="login" component="form" gap="12" vertical>
 			<Alert v-if="error" type="error">{{ error }}</Alert>
-			<TextField label="Email" v-model="email" type="email" />
-			<TextField label="Password" type="password" v-model="password">
+			<TextField :label="$t('auth.email')" v-model="email" type="email" />
+			<TextField
+				:label="$t('auth.password')"
+				type="password"
+				v-model="password"
+			>
 				<template #corner-hint>
-					<NuxtLink
+					<NuxtLinkLocale
 						class="text-primary text-xs font-medium"
 						to="/recovery"
 					>
-						Did you forget your password?
-					</NuxtLink>
+						{{ $t('auth.did-you-forget-your-password') }}
+					</NuxtLinkLocale>
 				</template>
 			</TextField>
 			<Stack gap="4" vertical>
@@ -57,13 +68,16 @@ const login = async () => {
 					block
 					:pending="pending"
 				>
-					Login
+					{{ $t('auth.login') }}
 				</Button>
 				<span class="text-center">
-					Don't have an account?
-					<NuxtLink class="font-medium text-primary" to="/register">
-						Register
-					</NuxtLink>
+					{{ $t('auth.dont-have-an-account') }}
+					<NuxtLinkLocale
+						class="font-medium text-primary"
+						to="/register"
+					>
+						{{ $t('auth.register') }}
+					</NuxtLinkLocale>
 				</span>
 			</Stack>
 		</Stack>
