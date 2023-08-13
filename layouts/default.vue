@@ -1,5 +1,13 @@
 <script setup lang="ts">
+const route = useRoute()
+
 const customizations = useCustomizationsStore()
+const select = useSelectStore()
+
+watch(
+	computed(() => route.path),
+	select.clear
+)
 </script>
 
 <template>
