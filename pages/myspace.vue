@@ -19,19 +19,16 @@ const currentLocale = computed(() =>
 	<Stack class="bg-gray-50 h-full p-4" vertical>
 		<Stack gap="4" vertical>
 			<ListCard v-if="user" title="You">
-				<Stack
-					class="px-4 py-4 text-left opacity-50"
+				<GhostButton
+					class="px-4 py-4 text-left"
 					gap="4"
 					items="center"
+					to="/highlights"
 				>
 					<Icon name="ph:highlighter-circle" />
 					<span class="flex-1 w-full">{{ $t('highlights') }}</span>
-					<span
-						class="text-xs uppercase text-gray tracking-widest font-medium"
-					>
-						{{ $t('coming-soon') }}
-					</span>
-				</Stack>
+					<Icon class="text-gray" name="iconoir:nav-arrow-right" />
+				</GhostButton>
 				<Stack
 					class="px-4 py-4 text-left opacity-50"
 					gap="4"

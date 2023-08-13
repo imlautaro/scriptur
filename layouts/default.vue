@@ -16,6 +16,7 @@ const customizations = useCustomizationsStore()
 				<slot />
 			</Stack>
 		</Stack>
+		<SelectBar />
 		<BottomNavigation />
 	</Stack>
 </template>

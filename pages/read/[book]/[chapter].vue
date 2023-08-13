@@ -22,11 +22,13 @@ definePageMeta({
 const route = useRoute()
 const { findBookById } = useBooks()
 const versionStore = useVersionStore()
+const selectStore = useSelectStore()
 const lastVisited = useCookie('last-visited')
 const currentBook = useCurrentBook()
 const localePath = useLocalePath()
 const { t } = useI18n()
 const { scrollingElement, scrollEnd } = useScrollingFeatures()
+const { fetchHighlightsForCurrentChapter } = useHighlights()
 
 const bookTitle = t(`books.titles.${currentBook.key}`)
 
@@ -71,6 +73,10 @@ watch(
 useHead(() => ({
 	title: `${bookTitle} - ${t('chapter')} ${route.params.chapter}`,
 }))
+
+onMounted(() => {
+	fetchHighlightsForCurrentChapter()
+})
 </script>
 
 <template>
@@ -78,6 +84,25 @@ useHead(() => ({
 		<Loader v-if="pending" />
 		<template v-else-if="data">
 			<ScrollIndicator :title="`${bookTitle} ${route.params.chapter}`" />
+			<div class="fixed hidden" ref="selectRef">
+				<p
+					v-for="item in selectStore.selection.sort(
+						(a, b) => a.verse - b.verse
+					)"
+					v-html="
+						`${replaceNumBySupChar(
+							item.verse
+						)}&nbsp;${removeSupElement(
+							data.verses.find(i => i.verse === item.verse)
+								?.content || ''
+						)}%LINEBREAK%%LINEBREAK%`
+					"
+				/>
+				<span>
+					*{{ selectStore.label }} &middot;
+					{{ data.version.acronym.toUpperCase() }}*
+				</span>
+			</div>
 			<div
 				class="flex-1 h-full overflow-y-auto duration-300"
 				:class="[scrollEnd ? 'pb-0' : 'pb-18']"
