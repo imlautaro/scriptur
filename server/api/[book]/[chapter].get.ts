@@ -169,7 +169,6 @@ export default defineEventHandler(async event => {
 			chapters: totalChapters,
 		}
 	} catch (error) {
-		console.error(error)
-		return {}
+		throw error
 	}
 })
