@@ -56,8 +56,8 @@ export default defineNuxtConfig({
 			name: 'Scriptur',
 			short_name: 'Scriptur',
 			theme_color: '#000000',
-			scope: '/read',
-			start_url: '/read',
+			scope: '/',
+			start_url: '/',
 		},
 		meta: {
 			name: 'Scriptur',
