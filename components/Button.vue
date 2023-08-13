@@ -123,7 +123,7 @@ const iconClasses = computed(() => {
 <template>
 	<Stack
 		:class="buildClasses"
-		class="cursor-pointer font-medium overflow-hidden rounded-lg focus-visible:ring-4 duration-150 relative whitespace-nowrap"
+		class="cursor-pointer font-medium overflow-hidden focus-visible:ring-4 duration-150 relative whitespace-nowrap"
 		:disabled="pending"
 		v-bind="{
 			...(() =>
