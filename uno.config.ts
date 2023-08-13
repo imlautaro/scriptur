@@ -67,7 +67,7 @@ export default defineConfig({
 	},
 	theme: {
 		colors: {
-			primary: colors.teal,
+			primary: colors.blue,
 		},
 		fontFamily: {
 			serif: ['"Roboto Slab"', 'sans-serif'],
