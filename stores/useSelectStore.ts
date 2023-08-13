@@ -16,6 +16,7 @@ export default defineStore('selection', {
 			)
 		},
 		toggleSelection(book: number, chapter: number, verse: number) {
+			window.getSelection()?.removeAllRanges()
 			if (this.isSelected(book, chapter, verse)) {
 				this.selection = this.selection.filter(i => {
 					return (
