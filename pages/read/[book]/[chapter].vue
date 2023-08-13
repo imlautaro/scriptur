@@ -86,7 +86,6 @@ onMounted(() => {
 				style="scroll-behavior: smooth"
 			>
 				<Stack vertical>
-					<VersionSelector />
 					<Stack
 						class="select-text pt-24 pb-12 px-6"
 						items="center"
