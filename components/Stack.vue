@@ -28,7 +28,7 @@ withDefaults(
 	}
 )
 
-const NuxtLink = resolveComponent('NuxtLink')
+const NuxtLink = resolveComponent('NuxtLinkLocale')
 </script>
 
 <template>
