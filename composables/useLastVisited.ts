@@ -6,14 +6,20 @@ export default () => {
 		chapter: '1',
 	})
 
-	if (cookie.value) {
-		const [book, chapter] = cookie.value.split('/')
+	watch(
+		cookie,
+		value => {
+			if (value) {
+				const [book, chapter] = value.split('/')
 
-		if (book && chapter) {
-			lastVisited.book = book
-			lastVisited.chapter = chapter
-		}
-	}
+				if (book && chapter) {
+					lastVisited.book = book
+					lastVisited.chapter = chapter
+				}
+			}
+		},
+		{ immediate: true }
+	)
 
 	return lastVisited
 }

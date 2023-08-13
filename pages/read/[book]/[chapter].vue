@@ -20,54 +20,30 @@ definePageMeta({
 })
 
 const route = useRoute()
-const { findBookById } = useBooks()
 const versionStore = useVersionStore()
 const selectStore = useSelectStore()
 const lastVisited = useCookie('last-visited')
 const currentBook = useCurrentBook()
-const localePath = useLocalePath()
 const { t } = useI18n()
 const { scrollingElement, scrollEnd } = useScrollingFeatures()
 const { fetchHighlightsForCurrentChapter } = useHighlights()
 
 const bookTitle = t(`books.titles.${currentBook.key}`)
 
-const { data, error, pending, refresh } = await useLazyAsyncData(async () => {
-	lastVisited.value = `${currentBook.key}/${route.params.chapter}`
+lastVisited.value = `${currentBook.key}/${route.params.chapter}`
 
-	return await $fetch<{
-		headings: {
-			verse: number
-			en: string
-			es: string
-		}[]
-		verses: {
-			book: number
-			chapter: number
-			verse: number
-			content: string
-		}[]
-		version: {
-			id: number
-			acronym: string
-			full_name: string
-			language: string
-		}
-		next: { book: number; chapter: number } | null
-		previous: { book: number; chapter: number } | null
-		books: number
-		chapters: never
-	}>(`/api/${currentBook.id}/${route.params.chapter}`, {
-		query: {
-			version: versionStore.current.id,
-			headingsLang: versionStore.current.language,
-		},
-	})
-})
-
-watch(
-	computed(() => versionStore.current),
-	() => refresh()
+const { data, error, pending } = await useLazyAsyncData(
+	() => {
+		return $fetch(`/api/${currentBook.id}/${route.params.chapter}`, {
+			query: {
+				version: versionStore.current.id,
+				headingsLang: versionStore.current.language,
+			},
+		})
+	},
+	{
+		watch: [computed(() => versionStore.current)],
+	}
 )
 
 useHead(() => ({
@@ -110,6 +86,7 @@ onMounted(() => {
 				style="scroll-behavior: smooth"
 			>
 				<Stack vertical>
+					<VersionSelector />
 					<Stack
 						class="select-text pt-24 pb-12 px-6"
 						items="center"
