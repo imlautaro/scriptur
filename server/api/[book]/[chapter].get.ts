@@ -1,7 +1,7 @@
-import { serverSupabaseClient } from '#supabase/server'
+import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler(async event => {
-	const supabase = await serverSupabaseClient(event)
+	const supabase = await serverSupabaseServiceRole(event)
 
 	const query = getQuery(event)
 	const currentVersion =
