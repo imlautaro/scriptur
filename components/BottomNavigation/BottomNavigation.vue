@@ -10,7 +10,7 @@ const show = computed(() => true)
 			class="bg-white border-t h-full max-h-18 duration-300"
 			vertical
 		>
-			<Stack class="h-18">
+			<Container class="h-18" max="sm" px="0">
 				<BottomNavigationItem
 					:label="$t('read')"
 					icon="solar:book-bold-duotone"
@@ -35,7 +35,7 @@ const show = computed(() => true)
 					to="/myspace"
 					:active="$route.name?.toString().startsWith('myspace___')"
 				/>
-			</Stack>
+			</Container>
 		</Stack>
 	</Transition>
 </template>

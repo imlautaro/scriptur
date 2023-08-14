@@ -16,8 +16,8 @@ const currentLocale = computed(() =>
 </script>
 
 <template>
-	<Stack class="bg-gray-50 h-full p-4" vertical>
-		<Stack gap="4" vertical>
+	<Stack class="bg-gray-50 h-full overflow-y-auto" vertical>
+		<Container class="p-4" gap="4" max="sm" px="0" vertical>
 			<ListCard v-if="user" title="You">
 				<GhostButton
 					class="px-4 py-4 text-left"
@@ -115,7 +115,7 @@ const currentLocale = computed(() =>
 					<Icon class="text-gray" name="iconoir:nav-arrow-right" />
 				</GhostButton>
 			</ListCard>
-		</Stack>
+		</Container>
 		<Modal v-model="languageModal">
 			<Stack vertical>
 				<template v-for="item in locales">
