@@ -1,63 +1,85 @@
-# Nuxt 3 Minimal Starter
+# Scriptur
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This app aims to offer a free and open source bible web app, with an easy to use interface, but at the same time with powerful study functionalities. The idea is to take advantage of all the open content within Christianity to provide a universal tool for both casual readers and theologians seeking in-depth study.
 
-## Setup
+There are many applications and software within the niche that are either good but very closed, or open but not so good. As a Christian developer, I think it would be great to have a completely open and accessible project because I think it's the perfect match for the community, and it has a lot of potential.
 
-Make sure to install the dependencies:
+## Project Status
 
-```bash
-# npm
-npm install
+A project like this requires a lot of work and time, so a production version is still a long way off. Even though, I'm working hard to be able to have a complete and, above all, useful product.
 
-# pnpm
-pnpm install
+Here is a summary of what we have to take into account when testing the app:
 
-# yarn
-yarn install
-```
+-   While not indicated with a tutorial yet, double-tapping on a verse enters a smart selection mode that allows you to copy verses or highlight them with pretty colors (an account is required for the last one).
 
-## Development Server
+-   At the moment, the interface is designed to be used **on mobile** phones. On desktop it's not so intuitive (yet).
 
-Start the development server on `http://localhost:3000`:
+-   The landing page is not ready yet, so it redirects directly to the platform.
 
-```bash
-# npm
-npm run dev
+-   There may be bugs!
 
-# pnpm
-pnpm run dev
+## Run Locally
 
-# yarn
-yarn dev
-```
+For this project I'm using `pnpm` as our package manager. Also, I'm using the Supabase CLI for local development.
 
-## Production
+1. Clone the project
 
-Build the application for production:
+> git clone https://github.com/imlautaro/scriptur.git
 
-```bash
-# npm
-npm run build
+2. Go to the project directory
 
-# pnpm
-pnpm run build
+> cd scriptur
 
-# yarn
-yarn build
-```
+3. Install dependencies
 
-Locally preview production build:
+> pnpm install
 
-```bash
-# npm
-npm run preview
+4. Disable the Google Auth provider in `~/supabase/config.toml` or configure valid `SUPABASE_AUTH_GOOGLE_CLIENT_ID` and `SUPABASE_AUTH_GOOGLE_SECRET` variables in `.env`.
 
-# pnpm
-pnpm run preview
+5. Run the Supabase containers
 
-# yarn
-yarn preview
-```
+> supabase start
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+6. Create a `.env.local` file and setup Supabase variables.
+
+> cp .env.example .env.local
+
+7. Run the project
+
+> pnpm dev
+
+## Environment Variables
+
+`NUXT_PUBLIC_BASE_URL`
+
+`SUPABASE_KEY`
+
+`SUPABASE_SERVICE_KEY`
+
+`SUPABASE_URL`
+
+Optional if you haven't disabled the Google Auth provider:
+
+`SUPABASE_AUTH_GOOGLE_CLIENT_ID`
+
+`SUPABASE_AUTH_GOOGLE_SECRET`
+
+## Tech Stack
+
+### Frontend
+
+-   Nuxt 3
+-   TypeScript
+-   UnoCSS
+
+### Backend
+
+-   Supabase
+
+## What Supabase features does this project use?
+
+This project uses the authentication system and databases protected by RLS policies.
+
+## License
+
+MIT
