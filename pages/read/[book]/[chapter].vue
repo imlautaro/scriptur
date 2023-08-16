@@ -46,6 +46,8 @@ const { data, error, pending } = await useLazyAsyncData(
 	}
 )
 
+const { el: selectRef } = useCopyBar()
+
 useHead(() => ({
 	title: `${bookTitle} - ${t('chapter')} ${route.params.chapter}`,
 }))
