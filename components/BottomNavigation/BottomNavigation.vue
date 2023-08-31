@@ -16,7 +16,8 @@ const show = computed(() => {
 	<Transition name="bottom-navigation">
 		<Stack
 			v-if="show"
-			class="bg-white border-t h-full max-h-18 duration-300"
+			class="bg-white border-gray-100 h-full max-h-18 duration-300 z-10"
+			style="box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.05)"
 			vertical
 		>
 			<Container class="h-18" max="sm" px="0">
