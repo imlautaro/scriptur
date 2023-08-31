@@ -56,7 +56,7 @@ const htmlContent = computed(() => {
 				customizationsStore.serif && 'font-serif',
 				selectStore.isSelected(book, chapter, verse)
 					? 'underline underline-dotted underline-offset-7 underline-gray-300 animate-head-shake animate-duration-500 text-gray-900'
-					: 'text-gray-700',
+					: 'text-gray-800',
 				selectMode && 'select-none',
 			]"
 			v-html="htmlContent"

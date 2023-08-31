@@ -70,7 +70,7 @@ export default defineConfig({
 			primary: colors.blue,
 		},
 		fontFamily: {
-			serif: ['"Roboto Slab"', 'sans-serif'],
+			serif: ['"Libre Baskerville"', 'sans-serif'],
 			sans: ['Inter', 'sans-serif'],
 		},
 	},
