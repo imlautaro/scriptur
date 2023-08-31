@@ -90,7 +90,7 @@ onMounted(() => {
 			>
 				<Stack vertical>
 					<Stack
-						class="select-text pt-24 pb-12 px-6"
+						class="select-text pt-24 pb-6 px-6"
 						items="center"
 						vertical
 					>
@@ -108,64 +108,56 @@ onMounted(() => {
 						<div
 							class="max-w-prose text-lg w-full gap-6 grid grid-cols-2"
 						>
-							<Button
+							<Stack
 								v-if="data.previous"
-								class="col-start-1"
+								class="col-start-1 bg-gray-200/25 hover:bg-gray-200/50 duration-150 p-4 rounded-2xl text-base"
 								color="secondary"
 								:to="`/read/${findBookById(data.previous.book)!.key}/${data.previous.chapter}`"
 								block
 							>
-								<template #content>
-									<Stack class="w-full" vertical>
-										<span
-											class="font-normal text-xs text-gray"
-										>
-											{{ $t('previous') }}
-										</span>
-										<span>
-											{{
-												$t(
-													`books.titles.${
-														findBookById(
-															data.previous.book
-														)!.key
-													}`
-												)
-											}}
-											{{ data.previous.chapter }}
-										</span>
-									</Stack>
-								</template>
-							</Button>
-							<Button
+								<Stack class="w-full" vertical>
+									<span class="font-normal text-xs text-gray">
+										{{ $t('previous') }}
+									</span>
+									<span class="font-medium">
+										{{
+											$t(
+												`books.titles.${
+													findBookById(
+														data.previous.book
+													)!.key
+												}`
+											)
+										}}
+										{{ data.previous.chapter }}
+									</span>
+								</Stack>
+							</Stack>
+							<Stack
 								v-if="data.next"
 								color="secondary"
-								class="col-start-2"
+								class="col-start-2 bg-gray-200/25 hover:bg-gray-200/50 duration-150 p-4 rounded-2xl text-base"
 								:to="`/read/${findBookById(data.next.book)!.key}/${data.next.chapter}`"
 								block
 							>
-								<template #content>
-									<Stack class="text-right w-full" vertical>
-										<span
-											class="font-normal text-xs text-gray"
-										>
-											{{ $t('next') }}
-										</span>
-										<span>
-											{{
-												$t(
-													`books.titles.${
-														findBookById(
-															data.next.book
-														)!.key
-													}`
-												)
-											}}
-											{{ data.next.chapter }}
-										</span>
-									</Stack>
-								</template>
-							</Button>
+								<Stack class="text-right w-full" vertical>
+									<span class="font-normal text-xs text-gray">
+										{{ $t('next') }}
+									</span>
+									<span class="font-medium">
+										{{
+											$t(
+												`books.titles.${
+													findBookById(
+														data.next.book
+													)!.key
+												}`
+											)
+										}}
+										{{ data.next.chapter }}
+									</span>
+								</Stack>
+							</Stack>
 						</div>
 					</Stack>
 
