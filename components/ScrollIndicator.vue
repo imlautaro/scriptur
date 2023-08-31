@@ -7,6 +7,8 @@ const {
 	scrollStart,
 } = useScrollingFeatures()
 
+const versionStore = useVersionStore()
+
 defineProps<{ title?: string }>()
 
 const show = ref(false)
@@ -50,8 +52,7 @@ onMounted(() => {
 			if (titleElement.value) {
 				if (
 					scrollingElement.value!.scrollTop >
-					titleElement.value!.offsetTop +
-						titleElement.value!.clientHeight
+					titleElement.value!.offsetTop // + titleElement.value!.clientHeight
 				) {
 					show.value = true
 				} else {
@@ -83,14 +84,18 @@ onMounted(() => {
 <template>
 	<div
 		:class="[show ? 'opacity-100' : 'opacity-0']"
-		class="bg-white dark:(bg-gray-900 border-gray-700) duration-300 border-b border-gray-200 absolute top-0 left-0 h-6 w-full z-10"
+		class="bg-white dark:(bg-gray-900 border-gray-700) duration-300 border-b-2 border-gray-200 absolute top-0 left-0 h-6 w-full z-10"
 	>
 		<div
 			:class="[show ? ' -translate-y-1/2' : ' -translate-y-0']"
 			class="absolute top-1/2 duration-300 left-1/2 -translate-x-1/2 text-xs text-secondary"
 		>
-			{{ title }}
+			{{ title }} &middot;
+			{{ versionStore.current.acronym.toUpperCase() }}
 		</div>
-		<div class="bg-gray-100 dark:bg-gray-800 h-full w-0" ref="progress" />
+		<div
+			class="bg-primary dark:bg-gray-800 h-0.5 translate-y-[2px] bottom-0 absolute w-0"
+			ref="progress"
+		/>
 	</div>
 </template>
