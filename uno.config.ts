@@ -67,7 +67,7 @@ export default defineConfig({
 	},
 	theme: {
 		colors: {
-			primary: colors.blue,
+			primary: colors.teal,
 		},
 		fontFamily: {
 			serif: ['"Libre Baskerville"', 'sans-serif'],
