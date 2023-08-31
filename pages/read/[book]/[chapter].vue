@@ -56,6 +56,8 @@ useHead(() => ({
 onMounted(() => {
 	fetchHighlightsForCurrentChapter()
 })
+
+const showVersionsModal = useState('show-versions-modal')
 </script>
 
 <template>
@@ -88,6 +90,14 @@ onMounted(() => {
 				ref="scrollingElement"
 				style="scroll-behavior: smooth"
 			>
+				<div class="relative">
+					<div
+						@click="showVersionsModal = true"
+						class="absolute top-6 right-6 bg-gray-200/25 rounded-full px-3 py-1.5 text-xs font-bold tracking-widest text-gray-600"
+					>
+						{{ versionStore.current.acronym.toUpperCase() }}
+					</div>
+				</div>
 				<Stack vertical>
 					<Stack
 						class="select-text pt-24 pb-6 px-6"

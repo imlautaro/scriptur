@@ -80,11 +80,14 @@ onMounted(() => {
 		})
 	}
 })
+
+const showVersionsModal = useState('show-versions-modal')
 </script>
 
 <template>
 	<div
 		:class="[show ? 'opacity-100' : 'opacity-0']"
+		@click="showVersionsModal = true"
 		class="bg-white dark:(bg-gray-900 border-gray-700) duration-300 border-b-2 border-gray-200 absolute top-0 left-0 h-6 w-full z-10"
 	>
 		<div

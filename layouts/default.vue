@@ -3,10 +3,18 @@ const route = useRoute()
 
 const customizations = useCustomizationsStore()
 const select = useSelectStore()
+const version = useVersionStore()
 
 watch(
 	computed(() => route.path),
 	select.clear
+)
+
+const showVersionsModal = useState('show-versions-modal', () => false)
+
+watch(
+	computed(() => version.current),
+	() => (showVersionsModal.value = false)
 )
 </script>
 
@@ -26,5 +34,8 @@ watch(
 		</Stack>
 		<SelectBar />
 		<BottomNavigation />
+		<Modal v-model="showVersionsModal">
+			<VersionSelector />
+		</Modal>
 	</Stack>
 </template>
