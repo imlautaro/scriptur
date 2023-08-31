@@ -27,6 +27,7 @@ const currentBook = useCurrentBook()
 const { t } = useI18n()
 const { scrollingElement, scrollEnd } = useScrollingFeatures()
 const { fetchHighlightsForCurrentChapter } = useHighlights()
+const { findBookById } = useBooks()
 
 const bookTitle = t(`books.titles.${currentBook.key}`)
 
@@ -102,6 +103,72 @@ onMounted(() => {
 							:headings="data.headings"
 						/>
 					</Stack>
+
+					<Stack class="pb-6 px-6" items="center" vertical>
+						<div
+							class="max-w-prose text-lg w-full gap-6 grid grid-cols-2"
+						>
+							<Button
+								v-if="data.previous"
+								class="col-start-1"
+								color="secondary"
+								:to="`/read/${findBookById(data.previous.book)!.key}/${data.previous.chapter}`"
+								block
+							>
+								<template #content>
+									<Stack class="w-full" vertical>
+										<span
+											class="font-normal text-xs text-gray"
+										>
+											{{ $t('previous') }}
+										</span>
+										<span>
+											{{
+												$t(
+													`books.titles.${
+														findBookById(
+															data.previous.book
+														)!.key
+													}`
+												)
+											}}
+											{{ data.previous.chapter }}
+										</span>
+									</Stack>
+								</template>
+							</Button>
+							<Button
+								v-if="data.next"
+								color="secondary"
+								class="col-start-2"
+								:to="`/read/${findBookById(data.next.book)!.key}/${data.next.chapter}`"
+								block
+							>
+								<template #content>
+									<Stack class="text-right w-full" vertical>
+										<span
+											class="font-normal text-xs text-gray"
+										>
+											{{ $t('next') }}
+										</span>
+										<span>
+											{{
+												$t(
+													`books.titles.${
+														findBookById(
+															data.next.book
+														)!.key
+													}`
+												)
+											}}
+											{{ data.next.chapter }}
+										</span>
+									</Stack>
+								</template>
+							</Button>
+						</div>
+					</Stack>
+
 					<PageNavButtons
 						:next="data.next"
 						:previous="data.previous"
