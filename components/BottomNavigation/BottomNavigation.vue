@@ -1,6 +1,15 @@
 <script setup lang="ts">
 const lastVisited = useLastVisited()
-const show = computed(() => true)
+const { scrollDirection, scrollStart, scrollEnd } = useScrollingFeatures()
+const route = useRoute()
+const show = computed(() => {
+	if (route.name?.toString().startsWith('read-book-chapter__')) {
+		if (!scrollDirection.value) {
+			return false
+		}
+	}
+	return true
+})
 </script>
 
 <template>
