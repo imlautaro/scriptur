@@ -1,4 +1,10 @@
 export default defineNuxtConfig({
+	app: {
+		pageTransition: {
+			name: 'page',
+			mode: 'out-in',
+		},
+	},
 	appConfig: {
 		nuxtIcon: {
 			size: '1.75em',
