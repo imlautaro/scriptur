@@ -7,6 +7,18 @@ const supaAuth = useSupabaseClient().auth
 const customizations = useCustomizationsStore()
 
 const languageModal = ref(false)
+const colorModal = ref(false)
+
+const availableColors = [
+	'rose',
+	'amber',
+	'green',
+	'teal',
+	'blue',
+	'indigo',
+	'purple',
+	'pink',
+]
 
 // @ts-ignore
 const currentLocale = computed(() =>
@@ -80,6 +92,15 @@ const currentLocale = computed(() =>
 					<span class="flex-1 w-full">Serif</span>
 					<SwitchButton v-model="customizations.serif" />
 				</Stack>
+				<GhostButton
+					class="px-4 py-4 pr-6 text-left"
+					gap="4"
+					items="center"
+					@click="colorModal = true"
+				>
+					<Icon name="solar:pallete-2-linear" />
+					<span class="flex-1 w-full">Color</span>
+				</GhostButton>
 				<Stack class="px-4 py-4 opacity-50" gap="4" items="center">
 					<Icon name="solar:moon-linear" />
 					<span class="flex-1 w-full">{{ $t('dark-mode') }}</span>
@@ -116,6 +137,25 @@ const currentLocale = computed(() =>
 				</GhostButton>
 			</ListCard>
 		</Container>
+		<Modal v-model="colorModal">
+			<div class="grid grid-cols-4 gap-6 p-6">
+				<Stack
+					justify="center"
+					v-for="item in availableColors"
+					@click="customizations.primaryColor = item"
+					component="button"
+				>
+					<div
+						class="w-12 duration-150 h-12 rounded-full"
+						:class="[
+							customizations.primaryColor === item &&
+								'ring-4 ring-offset-4 ring-black',
+							`bg-${item}`,
+						]"
+					/>
+				</Stack>
+			</div>
+		</Modal>
 		<Modal v-model="languageModal">
 			<Stack vertical>
 				<template v-for="item in locales">

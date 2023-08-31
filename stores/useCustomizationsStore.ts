@@ -3,6 +3,7 @@ export default defineStore('customizations', {
 		sepia: false,
 		serif: true,
 		showBooksAsGrid: true,
+		primaryColor: 'teal',
 	}),
 	persist: true,
 })

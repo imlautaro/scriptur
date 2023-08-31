@@ -13,7 +13,7 @@ const customizationsStore = useCustomizationsStore()
 			modelValue
 				? customizationsStore.sepia
 					? 'bg-black'
-					: 'bg-primary'
+					: `bg-${customizationsStore.primaryColor}`
 				: 'bg-gray-200',
 		]"
 	>

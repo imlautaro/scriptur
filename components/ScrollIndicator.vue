@@ -18,6 +18,7 @@ const progress = ref<HTMLDivElement | null>(null)
 const scrollDirection = ref(false)
 const scrollTop = ref(0)
 const scrollTop2 = ref(0)
+const customizations = useCustomizationsStore()
 
 onMounted(() => {
 	if (scrollingElement.value) {
@@ -94,7 +95,8 @@ onMounted(() => {
 			{{ versionStore.current.acronym.toUpperCase() }}
 		</div>
 		<div
-			class="bg-primary dark:bg-gray-800 h-0.5 translate-y-[2px] bottom-0 absolute w-0"
+			:class="`bg-${customizations.primaryColor}`"
+			class="dark:bg-gray-800 h-0.5 translate-y-[2px] bottom-0 absolute w-0"
 			ref="progress"
 		/>
 	</div>

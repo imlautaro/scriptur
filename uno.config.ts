@@ -7,6 +7,17 @@ import { highlightColors } from './utils/highlight-colors'
 const range = (size: number, startAt = 1) =>
 	Array.from(Array(size).keys()).map(i => i + startAt)
 
+const availableColors = [
+	'rose',
+	'amber',
+	'green',
+	'teal',
+	'blue',
+	'indigo',
+	'purple',
+	'pink',
+]
+
 export default defineConfig({
 	preflights: [
 		{
@@ -60,6 +71,32 @@ export default defineConfig({
 				`border-l-${color}-200`,
 				`text-${color}-950`,
 			])
+			.flat(),
+		...availableColors
+			.map(color => {
+				const shades = [
+					'50',
+					'100',
+					'200',
+					'300',
+					'400',
+					'500',
+					'600',
+					'700',
+					'800',
+					'900',
+				]
+				return [
+					...shades
+						.map(shade => [
+							`bg-${color}-${shade}`,
+							`text-${color}-${shade}`,
+						])
+						.flat(),
+					`bg-${color}`,
+					`bg-${color}-600/10`,
+				]
+			})
 			.flat(),
 	],
 	shortcuts: {
