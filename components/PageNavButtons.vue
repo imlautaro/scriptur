@@ -18,7 +18,7 @@ const show = computed(() => scrollDirection.value && !scrollEnd.value)
 
 <template>
 	<Stack
-		class="absolute bottom-0 left-0 z-10 lg:(bottom-auto top-1/2 -translate-y-1/2) w-full p-6 pointer-events-none"
+		class="absolute bottom-0 left-0 z-10 lg:(bottom-auto top-1/2 -translate-y-1/2) lt-sm:hidden w-full p-6 pointer-events-none"
 		items="center"
 		justify="between"
 	>

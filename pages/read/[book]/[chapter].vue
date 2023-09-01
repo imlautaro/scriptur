@@ -57,6 +57,27 @@ onMounted(() => {
 	fetchHighlightsForCurrentChapter()
 })
 
+useGestures({
+	swipeLeft() {
+		if (data.value?.next) {
+			return navigateTo(
+				`/read/${findBookById(data.value.next.book)!.key}/${
+					data.value.next.chapter
+				}`
+			)
+		}
+	},
+	swipeRight() {
+		if (data.value?.previous) {
+			return navigateTo(
+				`/read/${findBookById(data.value.previous.book)!.key}/${
+					data.value.previous.chapter
+				}`
+			)
+		}
+	},
+})
+
 const showVersionsModal = useState('show-versions-modal')
 </script>
 
