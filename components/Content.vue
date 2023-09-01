@@ -41,12 +41,14 @@ onMounted(async () => {
 
 	const regex = /#verse-(\d+)/
 	const match = route.hash.match(regex)
-	if (match && match[1]) {
-		const verseEl = document.getElementById(`verse-${match[1]}`)
-		if (verseEl && scrollingElement.value) {
-			scrollingElement.value.scrollTop = verseEl.offsetTop - 40
+	setTimeout(() => {
+		if (match && match[1]) {
+			const verseEl = document.getElementById(`verse-${match[1]}`)
+			if (verseEl && scrollingElement.value) {
+				scrollingElement.value.scrollTop = verseEl.offsetTop - 40
+			}
 		}
-	}
+	}, 500)
 })
 </script>
 
