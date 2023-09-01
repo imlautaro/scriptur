@@ -104,7 +104,7 @@ watch(
 
 <template>
 	<Stack class="h-full" vertical>
-		<Stack class="p-3 border-b" gap="2" items="center">
+		<Stack class="p-3 shadow" gap="2" items="center">
 			<template v-if="selected.chapter && selected.book">
 				<IconButton
 					icon="iconoir:nav-arrow-left"
@@ -164,7 +164,7 @@ watch(
 				<div v-else class="grid grid-cols-4 gap-2 p-2">
 					<NuxtLink
 						v-for="(_, verse) in new Array(verses)"
-						class="border py-3 px-5 font-medium shadow-sm hover:bg-gray-200/25 active:bg-gray-200/50 duration-150 rounded-lg w-full flex items-center justify-center text-center"
+						class="py-3 px-5 font-medium bg-gray-200/25 hover:bg-gray-200/50 duration-150 rounded-2xl w-full flex items-center justify-center text-center"
 						:to="
 							localePath({
 								name: 'read-book-chapter',
@@ -183,14 +183,16 @@ watch(
 			<div class="h-full" v-else-if="selected.book">
 				<Loader v-if="pendingChapters" />
 				<div v-else class="grid grid-cols-4 gap-2 p-2">
-					<Button
+					<Stack
 						v-for="(_, chapter) in new Array(chapters)"
-						block
-						color="secondary"
+						class="rounded-2xl p-3 bg-gray-200/25 hover:bg-gray-200/50"
+						items="center"
+						justify="center"
 						@click="selected.chapter = chapter + 1"
+						component="button"
 					>
 						{{ chapter + 1 }}
-					</Button>
+					</Stack>
 				</div>
 			</div>
 			<div v-else class="pb-4">
@@ -210,10 +212,11 @@ watch(
 								b => b.newTestament === (key === 'new')
 							)"
 							:key="book.id"
+							component="button"
 							class="duration-150"
 							:class="[
 								customizations.showBooksAsGrid
-									? 'border rounded-lg hover:bg-gray-200/25 active:bg-gray-200/50 p-3 items-center justify-center'
+									? 'rounded-2xl bg-gray-200/25 hover:bg-gray-200/50 p-3 items-center justify-center'
 									: 'hover:bg-black/5 active:bg-black/10 px-4 py-3',
 							]"
 							@click="selected.book = book"
@@ -230,9 +233,10 @@ watch(
 				</Stack>
 			</div>
 		</div>
-		<GhostButton
+		<Stack
 			@click="showVersionsModal = true"
-			class="px-4 py-3 text-left border-t"
+			class="px-4 py-3 text-left rounded-2xl bg-gray-200/25 hover:bg-gray-200/50 mx-2 my-2"
+			component="button"
 			items="center"
 		>
 			<Stack class="w-full flex-1" vertical>
@@ -242,7 +246,7 @@ watch(
 				</span>
 			</Stack>
 			<Icon class="text-gray" name="iconoir:nav-arrow-right" />
-		</GhostButton>
+		</Stack>
 		<Modal v-model="showVersionsModal">
 			<VersionSelector />
 		</Modal>

@@ -17,7 +17,11 @@ const show = computed(() => {
 		<Stack
 			v-if="show"
 			class="bg-white border-gray-100 h-full max-h-18 duration-300 z-10"
-			style="box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.05)"
+			:style="
+				$route.name?.toString().startsWith('read-books___')
+					? ''
+					: 'box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.05)'
+			"
 			vertical
 		>
 			<Container class="h-18" max="sm" px="0">
