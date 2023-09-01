@@ -88,19 +88,23 @@ const showVersionsModal = useState('show-versions-modal')
 	<div
 		:class="[show ? 'opacity-100' : 'opacity-0']"
 		@click="showVersionsModal = true"
-		class="bg-white dark:(bg-gray-900 border-gray-700) duration-300 border-b-2 border-gray-200 absolute top-0 left-0 h-6 w-full z-10"
+		class="bg-white duration-300 absolute top-0 left-0 h-8 w-full z-10"
 	>
 		<div
 			:class="[show ? ' -translate-y-1/2' : ' -translate-y-0']"
-			class="absolute top-1/2 duration-300 left-1/2 -translate-x-1/2 text-xs text-secondary"
+			class="absolute top-1/2 duration-300 left-1/2 -translate-x-1/2 text-xs text-gray-500 font-medium"
 		>
 			{{ title }} &middot;
 			{{ versionStore.current.acronym.toUpperCase() }}
 		</div>
 		<div
-			:class="`bg-${customizations.primaryColor}`"
-			class="dark:bg-gray-800 h-0.5 translate-y-[2px] bottom-0 absolute w-0"
-			ref="progress"
-		/>
+			class="bg-gray-200 h-0.5 translate-y-full bottom-0 absolute w-full"
+		>
+			<div
+				:class="`bg-${customizations.primaryColor}`"
+				class="h-full w-0"
+				ref="progress"
+			/>
+		</div>
 	</div>
 </template>
