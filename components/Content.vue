@@ -55,7 +55,7 @@ onMounted(async () => {
 <template>
 	<Stack class="max-w-prose text-lg" gap="12" vertical>
 		<h1
-			class="font-bold text-4xl text-center"
+			class="font-bold text-3xl text-center"
 			:class="[customizations.serif && 'font-serif']"
 			ref="titleElement"
 		>
