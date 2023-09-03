@@ -133,7 +133,7 @@ const showVersionsModal = useState('show-versions-modal')
 				</span>
 			</div>
 			<div
-				class="flex-1 h-full overflow-y-auto duration-300"
+				class="flex-1 h-full overflow-y-auto duration-300 hide-scrollbar"
 				:class="[scrollEnd ? 'pb-0' : 'pb-18']"
 				ref="scrollingElement"
 				style="scroll-behavior: smooth"
