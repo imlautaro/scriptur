@@ -1,16 +1,10 @@
 export default defineNuxtConfig({
-	app: {
-		pageTransition: {
-			name: 'page',
-			mode: 'out-in',
-		},
-	},
 	appConfig: {
 		nuxtIcon: {
 			size: '1.75em',
 		},
 	},
-	css: ['~/assets/css/globals.css'],
+	css: ['~/assets/css/globals.css', '~/assets/css/transitions.css'],
 	googleFonts: {
 		families: {
 			'Inter': [400, 500, 700],

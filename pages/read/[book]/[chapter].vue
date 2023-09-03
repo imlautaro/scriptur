@@ -1,5 +1,33 @@
 <script setup lang="ts">
 definePageMeta({
+	pageTransition: {
+		name: 'fade',
+		mode: 'in-out',
+	},
+	middleware(to, from) {
+		// @ts-ignore
+		if (to.name.startsWith('read-book-chapter___')) {
+			// @ts-ignore
+			if (from.name.startsWith('read-book-chapter___')) {
+				// @ts-ignore
+				to.meta.pageTransition.name =
+					+to.params.chapter > +from.params.chapter
+						? 'slide-left'
+						: 'slide-right'
+			}
+			if (
+				// @ts-ignore
+				from.name.startsWith('read-books___') ||
+				// @ts-ignore
+				from.name.startsWith('myspace___')
+			) {
+				// @ts-ignore
+				from.meta.pageTransition.name = 'slide-right'
+				// @ts-ignore
+				to.meta.pageTransition.name = 'slide-right'
+			}
+		}
+	},
 	validate({ params: { book, chapter } }) {
 		if (typeof book !== 'string' || typeof chapter !== 'string') {
 			return false
@@ -82,9 +110,8 @@ const showVersionsModal = useState('show-versions-modal')
 </script>
 
 <template>
-	<Stack class="h-full w-full">
-		<Loader v-if="pending" />
-		<template v-else-if="data">
+	<Stack class="h-full w-full absolute">
+		<template v-if="data">
 			<ScrollIndicator :title="`${bookTitle} ${route.params.chapter}`" />
 			<div class="fixed hidden" ref="selectRef">
 				<p
