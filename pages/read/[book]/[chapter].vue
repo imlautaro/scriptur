@@ -62,6 +62,7 @@ const bookTitle = t(`books.titles.${currentBook.key}`)
 lastVisited.value = `${currentBook.key}/${route.params.chapter}`
 
 const { data, error, pending } = await useLazyAsyncData(
+	`${currentBook.key}/${route.params.chapter}`,
 	() => {
 		return $fetch(`/api/${currentBook.id}/${route.params.chapter}`, {
 			query: {
@@ -111,6 +112,7 @@ const showVersionsModal = useState('show-versions-modal')
 
 <template>
 	<Stack class="h-full w-full absolute">
+		<Loader v-if="pending" />
 		<template v-if="data">
 			<ScrollIndicator :title="`${bookTitle} ${route.params.chapter}`" />
 			<div class="fixed hidden" ref="selectRef">
