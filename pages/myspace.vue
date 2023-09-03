@@ -51,7 +51,7 @@ const currentLocale = computed(() =>
 </script>
 
 <template>
-	<Stack class="bg-gray-50 h-full overflow-y-auto absolute" vertical>
+	<Stack class="bg-gray-50 h-full overflow-y-auto absolute w-full" vertical>
 		<Container class="p-4" gap="4" max="sm" px="0" vertical>
 			<ListCard v-if="user" title="You">
 				<GhostButton
