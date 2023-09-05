@@ -25,6 +25,7 @@ watch(
 		vertical
 	>
 		<Stack class="h-full flex-1 overflow-hidden relative">
+			<NavigationRail />
 			<Stack
 				class="bg-white flex-1 h-full relative overflow-hidden"
 				vertical
