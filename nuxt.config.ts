@@ -51,11 +51,13 @@ export default defineNuxtConfig({
 	pwa: {
 		icon: {
 			maskablePadding: 0,
+			sizes: [64, 120, 144, 152, 192, 384, 512, 1024],
 		},
 		manifest: {
 			name: 'Scriptur',
 			short_name: 'Scriptur',
 			theme_color: '#ffffff',
+			background_color: '#4f46e5',
 			scope: '/',
 			start_url: '/',
 		},
