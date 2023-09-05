@@ -56,7 +56,7 @@ export default defineNuxtConfig({
 		manifest: {
 			name: 'Scriptur',
 			short_name: 'Scriptur',
-			theme_color: '#ffffff',
+			theme_color: '#4f46e5',
 			background_color: '#4f46e5',
 			scope: '/',
 			start_url: '/',

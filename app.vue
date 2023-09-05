@@ -1,3 +1,14 @@
+<script setup lang="ts">
+useHead({
+	meta: [
+		{
+			name: 'theme-color',
+			content: '#ffffff',
+		},
+	],
+})
+</script>
+
 <template>
 	<div>
 		<NuxtLayout>
