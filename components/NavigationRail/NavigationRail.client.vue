@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const breakpointsStore = useBreakpointsStore()
 const showBooksPanel = ref(false)
 const showMyspacePanel = ref(false)
 
@@ -27,7 +26,7 @@ const customizations = useCustomizationsStore()
 </script>
 
 <template>
-	<Stack v-if="!breakpointsStore.smallerThanMd" class="z-20 relative shadow">
+	<Stack class="z-20 lt-md:hidden relative shadow">
 		<Stack class="bg-white text-sm" justify="between" vertical>
 			<Stack vertical>
 				<BrandIsotype
@@ -51,12 +50,7 @@ const customizations = useCustomizationsStore()
 		<Transition name="panel">
 			<Stack
 				v-if="showBooksPanel"
-				class="bg-white max-w-sm w-sm overflow-hidden h-full"
-				:class="[
-					breakpointsStore.greaterThanXl
-						? 'relative'
-						: 'absolute left-full',
-				]"
+				class="bg-white max-w-sm w-sm overflow-hidden h-full lt-xl:(absolute left-full) relative"
 			>
 				<div class="min-w-sm">
 					<Books />
@@ -66,12 +60,7 @@ const customizations = useCustomizationsStore()
 		<Transition name="panel">
 			<Stack
 				v-if="showMyspacePanel"
-				class="bg-white max-w-sm w-sm overflow-hidden h-full"
-				:class="[
-					breakpointsStore.greaterThanXl
-						? 'relative'
-						: 'absolute left-full',
-				]"
+				class="bg-white max-w-sm w-sm overflow-hidden h-full lt-xl:(absolute left-full) relative"
 			>
 				<div class="min-w-sm p-4">
 					<Space />
