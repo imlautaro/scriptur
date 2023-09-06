@@ -7,6 +7,17 @@ useHead({
 		},
 	],
 })
+
+const breakpoints = useBreakpoints()
+const breakpointsStore = useBreakpointsStore()
+
+watch(breakpoints.smaller('md'), smallerThanMd => {
+	breakpointsStore.smallerThanMd = smallerThanMd
+})
+
+watch(breakpoints.greater('xl'), greaterThanXl => {
+	breakpointsStore.greaterThanXl = greaterThanXl
+})
 </script>
 
 <template>

@@ -1,12 +1,11 @@
 <script setup lang="ts">
-const breakpoints = useBreakpoints()
-const smallerThanMd = breakpoints.smaller('md')
+const breakpointsStore = useBreakpointsStore()
 
 const lastVisited = useLastVisited()
-const { scrollDirection, scrollStart, scrollEnd } = useScrollingFeatures()
+const { scrollDirection } = useScrollingFeatures()
 const route = useRoute()
 const show = computed(() => {
-	if (!smallerThanMd.value) return false
+	if (!breakpointsStore.smallerThanMd) return false
 	if (route.name?.toString().startsWith('read-book-chapter__')) {
 		if (!scrollDirection.value) {
 			return false

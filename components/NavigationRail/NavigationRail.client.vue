@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const breakpoints = useBreakpoints()
+const breakpointsStore = useBreakpointsStore()
 const showBooksPanel = ref(false)
 const showMyspacePanel = ref(false)
 
@@ -27,10 +27,7 @@ const customizations = useCustomizationsStore()
 </script>
 
 <template>
-	<Stack
-		v-if="breakpoints.greaterOrEqual('md').value"
-		class="z-20 relative shadow"
-	>
+	<Stack v-if="!breakpointsStore.smallerThanMd" class="z-20 relative shadow">
 		<Stack class="bg-white text-sm" justify="between" vertical>
 			<Stack vertical>
 				<BrandIsotype
@@ -56,7 +53,7 @@ const customizations = useCustomizationsStore()
 				v-if="showBooksPanel"
 				class="bg-white max-w-sm w-sm overflow-hidden h-full"
 				:class="[
-					breakpoints.greater('xl').value
+					breakpointsStore.greaterThanXl
 						? 'relative'
 						: 'absolute left-full',
 				]"
@@ -71,7 +68,7 @@ const customizations = useCustomizationsStore()
 				v-if="showMyspacePanel"
 				class="bg-white max-w-sm w-sm overflow-hidden h-full"
 				:class="[
-					breakpoints.greater('xl').value
+					breakpointsStore.greaterThanXl
 						? 'relative'
 						: 'absolute left-full',
 				]"
