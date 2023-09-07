@@ -1,12 +1,5 @@
 <script setup lang="ts">
-useHead({
-	meta: [
-		{
-			name: 'theme-color',
-			content: '#ffffff',
-		},
-	],
-})
+useState('theme-color').value = '#ffffff'
 </script>
 
 <template>

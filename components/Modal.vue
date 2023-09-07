@@ -2,14 +2,12 @@
 const props = defineProps<{ modelValue: boolean }>()
 defineEmits(['update:modelValue'])
 
-useHead(() => ({
-	meta: [
-		{
-			name: 'theme-color',
-			content: props.modelValue ? '#404040' : '#ffffff',
-		},
-	],
-}))
+watch(
+	computed(() => props.modelValue),
+	() => {
+		useState('theme-color').value = props.modelValue ? '#404040' : '#ffffff'
+	}
+)
 </script>
 
 <template>
