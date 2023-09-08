@@ -14,8 +14,12 @@ definePageMeta({
 				// @ts-ignore
 				to.meta.pageTransition.name = 'slide-left'
 			}
-			// @ts-ignore
-			if (from.name.startsWith('myspace___')) {
+			if (
+				// @ts-ignore
+				from.name.startsWith('myspace___') ||
+				// @ts-ignore
+				from.name.startsWith('search___')
+			) {
 				// @ts-ignore
 				from.meta.pageTransition.name = 'slide-right'
 				// @ts-ignore

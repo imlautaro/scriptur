@@ -11,7 +11,9 @@ definePageMeta({
 				// @ts-ignore
 				from.name.startsWith('read-books___') ||
 				// @ts-ignore
-				from.name.startsWith('read-book-chapter___')
+				from.name.startsWith('read-book-chapter___') ||
+				// @ts-ignore
+				from.name.startsWith('search___')
 			) {
 				// @ts-ignore
 				from.meta.pageTransition.name = 'slide-left'

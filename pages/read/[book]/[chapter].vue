@@ -19,6 +19,8 @@ definePageMeta({
 				// @ts-ignore
 				from.name.startsWith('read-books___') ||
 				// @ts-ignore
+				from.name.startsWith('search___') ||
+				// @ts-ignore
 				from.name.startsWith('myspace___')
 			) {
 				// @ts-ignore
