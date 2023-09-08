@@ -1,13 +1,15 @@
 <script setup lang="ts">
 const showBooksPanel = ref(false)
 const showMyspacePanel = ref(false)
+const showSearchPanel = ref(false)
 
 const toggleShowBooksPanel = () => {
 	if (showBooksPanel.value) {
 		showBooksPanel.value = false
 		return
-	} else if (showMyspacePanel.value) {
+	} else if (showMyspacePanel.value || showSearchPanel.value) {
 		showMyspacePanel.value = false
+		showSearchPanel.value = false
 	}
 	showBooksPanel.value = true
 }
@@ -16,10 +18,22 @@ const toggleMyspacePanel = () => {
 	if (showMyspacePanel.value) {
 		showMyspacePanel.value = false
 		return
-	} else if (showBooksPanel.value) {
+	} else if (showBooksPanel.value || showSearchPanel.value) {
 		showBooksPanel.value = false
+		showSearchPanel.value = false
 	}
 	showMyspacePanel.value = true
+}
+
+const toggleSearchPanel = () => {
+	if (showSearchPanel.value) {
+		showSearchPanel.value = false
+		return
+	} else if (showBooksPanel.value || showMyspacePanel.value) {
+		showBooksPanel.value = false
+		showMyspacePanel.value = false
+	}
+	showSearchPanel.value = true
 }
 
 const customizations = useCustomizationsStore()
@@ -45,6 +59,12 @@ const customizations = useCustomizationsStore()
 					:active="showMyspacePanel"
 					icon="solar:widget-2-bold"
 				/>
+				<NavigationRailItem
+					@click="toggleSearchPanel"
+					:label="$t('search')"
+					:active="showSearchPanel"
+					icon="lucide:search"
+				/>
 			</Stack>
 		</Stack>
 		<Transition name="panel">
@@ -52,7 +72,7 @@ const customizations = useCustomizationsStore()
 				v-if="showBooksPanel"
 				class="bg-white max-w-sm w-sm overflow-hidden h-full lt-xl:(absolute left-full) relative"
 			>
-				<div class="min-w-sm">
+				<div class="min-w-sm border-l">
 					<Books />
 				</div>
 			</Stack>
@@ -64,6 +84,16 @@ const customizations = useCustomizationsStore()
 			>
 				<div class="min-w-sm p-4">
 					<Space />
+				</div>
+			</Stack>
+		</Transition>
+		<Transition name="panel">
+			<Stack
+				v-if="showSearchPanel"
+				class="bg-white max-w-sm w-sm overflow-hidden h-full lt-xl:(absolute left-full) relative"
+			>
+				<div class="min-w-sm border-l">
+					<Search />
 				</div>
 			</Stack>
 		</Transition>
