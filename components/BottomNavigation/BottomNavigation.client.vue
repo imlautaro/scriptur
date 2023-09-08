@@ -46,6 +46,12 @@ const show = computed(() => {
 					"
 				/>
 				<BottomNavigationItem
+					:label="$t('search')"
+					icon="lucide:search"
+					to="/search"
+					:active="$route.name?.toString().startsWith('search___')"
+				/>
+				<BottomNavigationItem
 					:label="`${$t('my')} ${$t('space')}`"
 					icon="solar:widget-2-bold"
 					to="/myspace"

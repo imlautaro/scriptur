@@ -185,5 +185,10 @@
 	"copy": "Copy",
 	"copy-copied": "Copied",
 	"search-the-whole-bible": "Search the whole Bible",
-	"apply": "Apply"
+	"apply": "Apply",
+	"search": "Search",
+	"in-the-bible": "in the Bible",
+	"love": "Love",
+	"wisdom": "Wisdom",
+	"no-results-found": "No results found"
 }
