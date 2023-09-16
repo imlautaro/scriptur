@@ -5,6 +5,7 @@ const props = defineProps<{
 	verse: number
 	content: string
 	heading?: string
+	hasComments?: boolean
 }>()
 
 const customizationsStore = useCustomizationsStore()
@@ -30,6 +31,29 @@ const htmlContent = computed(() => {
 		return content
 	}
 })
+
+const showComments = ref(false)
+
+const comments = ref<{
+	book: number
+	chapter: number
+	verse: number
+	content: string
+}>()
+
+watch(showComments, async value => {
+	if (value) {
+		if (props.hasComments) {
+			if (!comments.value) {
+				comments.value = await $fetch(
+					`/api/${props.book}/${props.chapter}/${props.verse}/commentary`
+				)
+			}
+		} else {
+			showComments.value = false
+		}
+	}
+})
 </script>
 
 <template>
@@ -44,12 +68,38 @@ const htmlContent = computed(() => {
 		class="relative"
 		:id="`verse-${verse}`"
 	>
-		<span
-			class="absolute -left-1 -translate-x-full text-[0.5em] top-0 -translate-y-1 text-gray select-none"
-			:class="[customizationsStore.serif && 'font-serif']"
-		>
-			{{ verse }}
-		</span>
+		<LazyModal v-model="showComments">
+			<Stack class="px-6" vertical>
+				<div
+					v-if="comments"
+					class="prose max-w-none"
+					:class="[customizationsStore.serif && 'font-serif']"
+					v-html="comments.content"
+				/>
+				<Loader class="my-6" v-else />
+			</Stack>
+		</LazyModal>
+		<div class="absolute -left-2 -top-1 select-none">
+			<Stack
+				class="w-6 h-6 -mx-3"
+				component="button"
+				items="center"
+				justify="center"
+				@contextmenu="showComments = true"
+			>
+				<span
+					class="text-[0.5em]"
+					:class="[
+						customizationsStore.serif && 'font-serif',
+						hasComments
+							? `text-${customizationsStore.primaryColor}-600 font-bold`
+							: 'text-gray',
+					]"
+				>
+					{{ verse }}
+				</span>
+			</Stack>
+		</div>
 		<div
 			class="leading-relaxed"
 			:class="[

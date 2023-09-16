@@ -6,6 +6,7 @@ const props = defineProps<{
 		chapter: number
 		verse: number
 		content: string
+		hasComments?: boolean
 	}[]
 	headings: {
 		verse: number
@@ -69,6 +70,7 @@ onMounted(async () => {
 				:heading="findHeading(item.verse)"
 				:book="item.book"
 				:chapter="item.chapter"
+				:has-comments="item.hasComments"
 			/>
 		</Stack>
 	</Stack>

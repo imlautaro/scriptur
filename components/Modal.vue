@@ -24,7 +24,8 @@ watch(
 	>
 		<div
 			v-if="modelValue"
-			class="bg-white duration-300 fixed bottom-0 md:(bottom-auto top-1/2 -translate-y-1/2 max-w-md left-1/2 -translate-x-1/2 rounded-2xl) left-0 w-full rounded-t-3xl z-30 max-h-screen-[80vh] overflow-y-auto"
+			class="bg-white duration-300 fixed bottom-0 md:(bottom-auto top-1/2 -translate-y-1/2 max-w-md left-1/2 -translate-x-1/2 rounded-2xl) left-0 w-full rounded-t-3xl z-30 overflow-y-auto"
+			style="max-height: 80vh"
 		>
 			<slot />
 		</div>
