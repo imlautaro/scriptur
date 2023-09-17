@@ -2,12 +2,12 @@
 	"name": "nuxt-app",
 	"private": true,
 	"scripts": {
-		"build": "nuxt build --bun",
-		"dev": "nuxt dev --dotenv .env.local --bun",
-		"dev:prod": "nuxt dev --dotenv .env.production --bun",
-		"generate": "nuxt generate --bun",
-		"preview": "nuxt preview --bun",
-		"postinstall": "nuxt prepare --bun"
+		"build": "nuxt build",
+		"dev": "nuxt dev --dotenv .env.local",
+		"dev:prod": "nuxt dev --dotenv .env.production",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare"
 	},
 	"devDependencies": {
 		"@nuxt/devtools": "^0.8.2",
